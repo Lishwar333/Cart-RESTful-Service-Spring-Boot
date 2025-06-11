@@ -90,6 +90,8 @@ This service provides comprehensive API endpoints for managing shopping carts an
 
 The service runs on port `8082`. All endpoints are relative to `http://localhost:8082`.
 
+<img src="images/swagger.png" alt="Project Logo" style="max-width: 200px;">
+
 ### 1. Cart Controller (`/cart`)
 
 Manages CRUD operations for `Cart` entities.
@@ -128,6 +130,7 @@ Manages CRUD operations for `Cart` entities.
           ]
         }
         ```
+        <img src="images/cart req.png" alt="Project Logo" style="max-width: 200px;">
 
 * **`POST /cart/addcart`**
 
@@ -159,6 +162,7 @@ Manages CRUD operations for `Cart` entities.
         * `200 OK`: Returns the added `Cart` object.
 
         * `400 Bad Request`: If any `LineItem` in the cart has invalid data (e.g., `itemId < 1`, `price < 1`, `productId < 1`, `productName` is null, `quantity < 1`).
+          
 
     * **Example Response (Success):**
 
@@ -412,6 +416,12 @@ Manages CRUD operations for `LineItem` entities, often in the context of a `Cart
 
         * `404 Not Found`: If no line item is found with the given `id` (DataNotFound).
 
+## Integration Testing 
+
+Integration testing in this project focuses on verifying the interactions and functionality of different layers and components of the RESTful service working together as a cohesive unit. It ensures that the controllers, services, repositories, and the underlying database (H2 in-memory) communicate correctly and that the API endpoints behave as expected when handling requests.
+
+ <img src="images/integration test.png" alt="Project Logo" style="max-width: 200px;">
+
 ## Database Schema
 
 The service uses an H2 in-memory database. The schema is automatically created/dropped on application startup/shutdown based on JPA entities (`ddl-auto=create-drop`).
@@ -421,6 +431,7 @@ The service uses an H2 in-memory database. The schema is automatically created/d
 Stores information about individual shopping carts.
 
 * `cart_id` (Primary Key, auto-generated)
+  <img src="images/cart table.png" alt="Project Logo" style="max-width: 200px;">
 
 ### `line_item` Table
 
@@ -437,6 +448,7 @@ Stores details of items within a cart.
 * `price` (Double)
 
 * `fk` (Foreign Key referencing `cart_id` in the `cart` table)
+  <img src="images/line item table.png" alt="Project Logo" style="max-width: 200px;">
 
 ### Initial Data
 
@@ -470,6 +482,7 @@ The service implements global exception handling using `@ControllerAdvice` to pr
           "timestamp": "2025-06-11"
         }
         ```
+   <img src="images/error message.png" alt="Project Logo" style="max-width: 200px;">
 
 * **`InvalidInput` Exception:**
     * **Triggered by:** When input data for an operation (e.g., ID less than 1, missing required fields, invalid quantity/price in LineItem).
