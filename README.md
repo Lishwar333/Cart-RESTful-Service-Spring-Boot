@@ -431,7 +431,8 @@ The service uses an H2 in-memory database. The schema is automatically created/d
 Stores information about individual shopping carts.
 
 * `cart_id` (Primary Key, auto-generated)
-  <img src="images/cart table.png" alt="Project Logo" style="max-width: 200px;">
+
+<img src="images/cart table.png" alt="Project Logo" style="max-width: 200px;">
 
 ### `line_item` Table
 
@@ -448,7 +449,8 @@ Stores details of items within a cart.
 * `price` (Double)
 
 * `fk` (Foreign Key referencing `cart_id` in the `cart` table)
-  <img src="images/line item table.png" alt="Project Logo" style="max-width: 200px;">
+
+<img src="images/line item table.png" alt="Project Logo" style="max-width: 200px;">
 
 ### Initial Data
 
